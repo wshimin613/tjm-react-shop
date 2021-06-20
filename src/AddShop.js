@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Nav from './Nav';
+import { useHistory } from 'react-router-dom';
 import { Grid, Paper, TextField, Button } from '@material-ui/core';
+import PublishIcon from '@material-ui/icons/Publish';
 
 const paperStyle = {
     padding: '20px 20px',
@@ -16,6 +18,7 @@ function AddShop() {
     const [sprice, setSprice] = useState("")
     const [inventory, setInventory] = useState("")
     const [file, setFile] = useState("")
+    const history = useHistory()
 
     const add = () => {
         const formData = new FormData()
@@ -30,6 +33,7 @@ function AddShop() {
                 "Accept": 'application/json'
             }
         })
+        result ? alert("OK") : console.log("false")
     };
 
     return (
@@ -43,7 +47,7 @@ function AddShop() {
                         <TextField onChange={(e) => setSprice(e.target.value)} fullWidth label='商品價格' placeholder="Enter your product price" multiline rows={0} required />
                         <TextField onChange={(e) => setInventory(e.target.value)} fullWidth label='庫存' placeholder="Enter your inventory" type="number" required />
                         <TextField onChange={(e) => setFile(e.target.files[0])} type="file" />
-                        <Button onClick={add} style={buttonStyle} variant="contained" color="primary">upload</Button>
+                        <Button startIcon={<PublishIcon />} onClick={add} style={buttonStyle} variant="contained" color="primary">upload</Button>
                     </form>
                 </Paper>
             </Grid >
