@@ -53,7 +53,7 @@ function Register() {
                     </Grid>
                     <h2>Sign Up</h2>
                     <form>
-                        <TextField value={name} onChange={(e) => setName(e.target.value)} fullWidth label='Name' placeholder="Enter your name" />
+                        <TextField value={name} onChange={(e) => setName(e.target.value)} fullWidth label='Name' placeholder="Enter your name" multiline rows={0} required />
                         <TextField value={tel} onChange={(e) => setTel(e.target.value)} fullWidth label='Tel' placeholder="Enter your cell phone" />
                         <TextField value={password} onChange={(e) => setPassword(e.target.value)} fullWidth label='Password' type="password" placeholder="Enter your password" />
                         <TextField value={address} onChange={(e) => setAddress(e.target.value)} fullWidth label='Address' placeholder="Enter your address" />

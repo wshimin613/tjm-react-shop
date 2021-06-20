@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Nav from './Nav';
-import { Container, Grid, Paper, Typography } from '@material-ui/core';
-// import test from './toothbrushs/01.jpg';
+import { Container, Grid, Paper, Typography, Button } from '@material-ui/core';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+
+const paperStyle = {
+    padding: '20px 20px',
+    width: 300,
+    margin: "30px auto",
+};
 
 function Shop() {
     const [shopinventory, setShopinventory] = useState([]);
@@ -24,36 +30,40 @@ function Shop() {
         inventory();
     }, []);
 
-    // let sname = shopinventory.map((list) => <li>{list.sname}</li>)
-    // console.log(shopinventory[2].img)
+    let item = shopinventory.map((value) =>
+        <React.Fragment key={value.id}>
+            <Grid item xs={4}>
+                <Paper elevation={10} style={{ padding: 15, width: "100%" }}>
+                    <img src={"http://120.114.142.24:8000/" + value.img} style={{ width: '100%' }} />
+                    <Typography style={{ color: "#333333" }} variant="subtitle2" gutterBottom>
+                        {value.sname}
+                    </Typography>
+                    <Typography style={{ color: "#ee4d2d" }} variant="body2" gutterBottom>
+                        $ {value.sprice}
+                    </Typography>
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        size="small"
+                        startIcon={<AddShoppingCartIcon />}
+                        href="#"
+                    >
+                        BUY
+                    </Button>
+                    <Typography style={{ color: "#9c9c9c" }} display="block" align="right" variant="caption" gutterBottom>
+                        庫存：{value.snum}
+                    </Typography>
+                </Paper>
+            </Grid>
+        </React.Fragment>
+    );
+
     return (
         <>
             <Nav />
-            <Container maxWidth="md" style={{ backgroundColor: '#cfe8fc' }}>
+            <Container maxWidth="md" style={{ padding: 20 }}>
                 <Grid container spacing={3}>
-                    <Grid item xs={3}>
-                        <Paper>
-                            {/* <img src={"http://120.114.142.24:8000/api/shops/" + shopinventory[2].img} style={{ width: '100%' }} /> */}
-                            <Typography color="textSecondary">
-                                牙刷
-                            </Typography>
-                            <Typography color="textSecondary">
-                                200
-                            </Typography>
-                            <Typography color="textSecondary">
-                                10
-                            </Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={3}>
-                        <Paper>xs=3</Paper>
-                    </Grid>
-                    <Grid item xs={3}>
-                        <Paper >xs=3</Paper>
-                    </Grid>
-                    <Grid item xs={3}>
-                        <Paper>xs=3</Paper>
-                    </Grid>
+                    {item}
                 </Grid>
             </Container>
         </>

@@ -5,6 +5,7 @@ import Home from './Home';
 import Shop from './Shop';
 import Register from './Register';
 import Login from './Login';
+import AddShop from './AddShop';
 import Weather from './Weather';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Login />
         </Route>
         <ProtectedRoute path="/weather" component={Weather} />
+        <ProtectedRoute path="/addshop" component={AddShop} />
       </Switch>
     </Router>
   );

@@ -61,6 +61,7 @@ function Nav(props) {
                                     <>
                                         <Link to="/" className="nav-links" style={navStyle}>Home</Link>
                                         <Link to="/shop" className="nav-links" style={navStyle}>shop</Link>
+                                        <Link to="/addshop" className="nav-links" style={navStyle}>addshop</Link>
                                         <Link to="/weather" className="nav-links" style={navStyle}>weather</Link>
                                         <Link to="/" className="nav-links" style={navStyleRight} onClick={logOut}>Logout-{isAuthenticated.name}</Link>
                                     </>
